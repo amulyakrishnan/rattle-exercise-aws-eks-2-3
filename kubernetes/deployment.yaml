@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-world-deployment
+  namespace: exercise
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: hello-world
+  template:
+    metadata:
+      labels:
+        app: hello-world
+    spec:
+      containers:
+        - name: hello-world-container
+          image: amulyakrishnan123/hello-world-excerise:latest
+          ports:
+          - containerPort: 8080
+      imagePullSecrets:
+      - name: regcred
